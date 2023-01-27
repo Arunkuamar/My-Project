@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Registration Form</title>
+    <!-- bootstrap css-->
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+
+    <!--bootstrap icon-->
+    <link rel="stylesheet" href="../Javascript/icons/bootstrap-icons.css">
+
+    <!-- css link file -->
+    <link rel="stylesheet" href="../sign up form validation js/signup.css">
+    
+    <!-- js link file -->
+    <script src="../sign up form validation js/signup.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+    <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+
+</head>
+<body>
+    <div class="container p-5  col-lg-4 border border-dark">
+        <h1>Sign up Form </h1> 
+     <form name="form" 
+      onsubmit="return formvalidations()"
+     action="#" onchange="previewImage()" > 
+     
+     <!-- User Name -->
+       <div class="mb-2">
+        <label class="form-label">User Name</label>
+        <input type="text" class="form-control" id="uname" placeholder="Enter Name" autofocus="on">
+        <span id="uname_span" ></span>
+       </div>
+
+       <!-- Email -->
+
+       <div class="mb-2">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter Email">
+        <span id="email_span" ></span>
+       </div>
+
+       <!-- Password -->
+
+       <div class="mb-2">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter Password"> 
+        <span id="pwd_span" ></span>
+       </div>
+
+       <!-- Re enter password  -->
+
+       <div class="mb-2">
+        <label class="form-label">Re-enter Password</label>
+        <input type="password" class="form-control" id="cpwd" placeholder="Confirm Password">
+        <span id="cpwd_span" ></span>
+       </div>
+
+       <!-- mobile number -->
+
+       <div class="mb-2">
+        <label class="form-label">Mobile Number</label>
+        <input type="number" class="form-control" id="mbl" placeholder="Enter Mobile Number "  maxlength="10">
+        <span id="mble_span" ></span>
+       </div>
+
+
+
+       <!-- Date of birth -->
+
+       <div class="mb-2">
+        <label class="form-label">Date Of Birth</label>
+        <input type="date" class="form-control" id="date" >
+        <span id="date_span" ></span>
+       </div>
+
+       <!-- Gender -->
+       <div class="mb-2" >
+       <label class="form-label"id="gender" name="gender">Gender</label>  <br>
+        <input type="radio" name="gender" > Male
+        <input type="radio" name="gender"> FeMale
+        <input type="radio" name="gender">  Prefer Not To Say
+        <br>
+        <span id="gender_span" ></span>
+       </div>
+
+       <!-- Languages -->
+
+       <div class="mb-2" id="language"name="language">
+       <label class="form-label">Languages </label><br>
+       <input type="checkbox" id="l1"> Telugu 
+       <input type="checkbox" id="l2" > Hindi
+       <input type="checkbox" id="l3" > English
+       <br>
+       <span id="lang_span" ></span>
+      </div>
+      
+       <!-- Address -->
+       
+       <div class="mb-2">
+        <label class="form-label">Address For Communination</label>
+        <br>
+        <textarea  style="width:65% ;height: 100px; resize: none;" id="textarea" ></textarea>
+        <br>
+        <span id="textarea_span" ></span>
+       </div>
+
+       <!-- Country/state -->
+
+       <div class="mb-2">
+        <label class="form-label">Country/State</label><br>
+
+        <select id="countries" style="width: 40%; word-spacing:3px;">      
+        <option value="-1">Select Country</option>
+        <option value="USA">America</option>
+        <option value="AUS">Australia</option>
+        <option value="BAN">Bangladesh</option>
+        <option value="ENG">England</option>
+        <option value="IND">India</option> 
+        <span id="country"></span>
+        </select>
+   
+        <select  id="states"style="width:40%;  word-spacing:2px;" >
+         <option value="-1">Select State</option>
+         <span id="state"></span>
+        </select>
+
+        </div>
+
+        <script>
+            
+        var country_states=[
+
+        {
+            country:"America",
+            code:"USA",
+            states:["Alaska","California","Florida","Hawali","Missouri","Texas"]
+            },
+
+    {
+            country:"Australia",
+            code:"AUS",
+            states:["Canberra","Devon","sidney","victoria","Queensland"]
+        },
+        
+        {
+            country:"Bangladesh",
+            code:"BAN",
+            states:["Barishal","Dhaka","Khulna","Rangpur","Rajshahi","Sylhet"]
+        },
+
+        {
+            country:"England",
+            code:"ENG",
+            states:["France","Hawali","Landon","Scotland","Texas"]
+        },
+
+        {
+            country:"India",
+            code:"IND",
+            states:["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Maharashtra","Telangana"]
+        }
+        ]
+        
+           var countryselect=document.querySelector("#countries")
+           var stateselect=document.querySelector("#states")
+         
+            countryselect.onchange = function(){
+             stateselect.options.length=0 ;
+             if(countryselect.value!=-1){
+             for(ele of country_states){
+             if(countryselect.value== ele.code){
+                var states = ele.states;
+                var op= document.createElement('option');
+                op.value=-1;
+                op.innerText ="Select State";
+                stateselect.options[0] = op;
+                var i=1;
+                for(state of states){
+                    var op= document.createElement('option');
+                    op.value= state;
+                    op.innerText=state;
+                    stateselect.options[i]=op;
+                    i++
+                }
+              }
+            }
+          }
+        }
+     </script>    
+
+
+       <!-- file upload -->
+ <div class="mb-2">
+    <label class="form-label">Upload file</label><br>
+    <input type="file" name="file" id="file" accept="image/png/jpeg"><br><br>
+    <img id="preview" style="width:50%; height:100px;  background-color: aliceblue;">
+    
+   <span id="image_span" ></span>
+ </div>
+
+
+    <!-- Captcha -->
+
+<div class="mb-2">
+    <label class="form-label">Enter Captcha Code</label><br>
+    <input type="text"  id="CaptchaText" class="w-20 p-1" style="background-image: url(../images/captcha-bg.png); letter-spacing: 25px;font-weight: bold;">
+    <input type="button" value="Reload" id="refreshbtn" >
+
+    <br> <br>
+    <input type="text"  id="CaptchaEnter"class="w-30 p-1" style="letter-spacing: 25px;font-weight: bold;">
+    <input type="button" value="check" id="checkbtn" ><br>
+    <span id="captcha_span" class="text-danger" ></span>
+</div>
+
+<script>
+    var CaptchaText=document.getElementById("CaptchaText")
+    var CaptchaEnter=document.getElementById("CaptchaEnter")
+    var refreshbtn=document.getElementById("refreshbtn")
+    var checkbtn=document.getElementById("checkbtn")
+    var captcha_span=document.getElementById("captcha_span")
+    var chars="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    
+    var captcha
+    function generateCaptcha(){
+        captcha=""
+        for(i=0;i<6;i++){
+            let index =Math.floor(Math.random()*chars.length);
+            captcha=captcha+chars[index]
+        }
+        CaptchaText.value=captcha
+     }
+
+    function validateCaptcha(){
+        if(captcha==CaptchaEnter.value){
+    
+        captcha_span.innerHTML=`captcha matched`
+        captcha_span.className="text-success"
+     }
+        else
+        {
+        captcha_span.innerHTML=` Enter Valid Captcha`
+        captcha_span.className="text-danger"
+        CaptchaEnter.value=""
+        }
+    }
+    
+     generateCaptcha()
+    
+    refreshbtn.onclick=generateCaptcha;
+    checkbtn.onclick=validateCaptcha;
+    
+</script>
+  
+     <!-- Terms-->
+
+    <label>
+        <input type="checkbox"  id="term"  name="checkbox" value="check"/> 
+           Please Accept the Terms & Conditions </label>
+           <br>
+        <span id="term_span" class="text-danger"></span>
+<br>
+
+        <!-- Buttons -->
+
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+            <button class="btn btn-primary" type="reset">Reset</button>
+        </div>
+
+   </form>
+
+    </div>
+        
+</body>
+</html>
